@@ -17,7 +17,7 @@ const Auth = createStackNavigator();
 function LoginOrProfileNavigator(){
   return (
     <LoginOrProfile.Navigator
-      initialRouteName='Profile'
+      initialRouteName='Auth'
       headerMode='none'
     >
       <LoginOrProfile.Screen name="Profile" component={ Profile } />

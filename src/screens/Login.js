@@ -1,18 +1,22 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, TextInput } from 'react-native';
+import { connect } from 'react-redux';
+import { login } from '../store/actions/user';
 
 class Login extends Component {
   state = {
+    name: 'Félix Vicente',
     email: '',
     password: '',
   }
 
   login = () => {
-    this.props.navigation.replace('Profile')
+    this.props.onLogin({ ...this.state });
+    this.props.navigation.replace('Profile');
   }
 
   register = () => {
-    this.props.navigation.navigate('Register')
+    this.props.navigation.navigate('Register');
   }
 
   render() {
@@ -69,4 +73,10 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Login;
+const mapDispatchToProps = dispatch => {
+  return {
+    onLogin: user => dispatch(login(user))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Login);
